@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "獨立書店查詢";
+}
+
+
+<script>
+        $(document).ready(function () {
+            var dataurl = "http://localhost:51507/emapOpenDataAction.json";
+            var BName = "@ViewBag.BStoreName";
+            var member = "@ViewBag.Member";
+            $.ajax({
+                url: dataurl,
+                type: 'GET',
+                success: function (data) {
+                    //alert("獨立書店共" + data.length + "筆記錄");
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].name == BName) {
+                        if (data[i].representImage != null) {
+                            $("#tableshow").append
+                                (
+                                "<center><tr>" + "<td><img src='" + data[i].representImage + "' style='width:600px;'></td>" + "</tr></center>"
+                                );
+                        } else {
+                            $("#tableshow").append
+                                (
+                                "<center><tr>" + "<td><img src='../pictures/Nofound.png' style='width:600px;'></td>" + "</tr></center>"
+                                );
+                        }
+                        $("#tableshow").append
+                            (
+                            "<tr> <td>介紹：</br>" + data[i].intro + "</td></tr>" +
+                                "<tr> <td>地址：" + data[i].address + "</td></tr>" +
+                                "<tr> <td>營業時間：" + data[i].opentime + "</td></tr>" +
+                                "<tr> <td>連絡電話：" + data[i].phone + "</td></tr>" +
+                                "<tr> <td>電子信箱：" + data[i].email + "</td></tr>" +
+                                "<tr> <td>網站連結：" + "<a href='" + data[i].website +"'target='_blank'>" + data[i].website + "</td></tr>" +
+                                "<tr> <td>FaceBook：" + "<a href='" + data[i].facebook + "'target='_blank'>" + data[i].facebook + "</td></tr>"
+
+                        );
+                    }
+                }
+            }
+        });
+    });
+
+</script>
+
+<center><h1 style="color:white;font-size:52px;">@ViewBag.BStoreName</h1></center>
+
+<table class="table" id="tableshow" style="color:white;font-size:24px;"></table>
+

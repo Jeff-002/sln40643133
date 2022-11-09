@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewBag.Title = "獨立書店查詢";
+}
+
+<script>
+        $(document).ready(function () {
+            var dataurl = "http://localhost:51507/emapOpenDataAction.json";
+            var member = "@ViewBag.Member";
+            $.ajax({
+                url: dataurl,
+                type: 'GET',
+                success: function (data) {
+                    //alert("獨立書店共" + data.length + "筆記錄");
+                    for (var i = 0; i < data.length; i++) {
+                        var name = data[i].name;
+                        if (member == "") {
+                            if (data[i].representImage != null) {
+                                $("#tableshow").append
+                                    (
+                                    "<tr>" +
+                                    "<td>" + data[i].name + "</td>" +
+                                    "<td>" + data[i].address + "</td>" +
+                                    "<td>" + data[i].openTime + "</td>" +
+                                    "<td>" + data[i].phone + "</td>" +
+                                    "<td><img src='" + data[i].representImage + "' style='width:200px;'></td>" +
+                                    "<td style='vertical-align:middle;'><a href='https://www.google.com.tw/maps/place/" + data[i].address + " 'target='_blank' class='btn btn-info'>地圖 </td><td style='vertical-align:middle;'>" +
+                                    "<form style='margin - left: 10px; ' method='post'> <input type='hidden' name='BStoreName' value='" + data[i].name + "' /> <input type='submit' id='BStoreName' value='檢視' class='btn btn-info' /></form>" + "</td>" +
+                                    "</tr>"
+                                    );
+                            } else {
+                                $("#tableshow").append
+                                    (
+                                    "<tr>" +
+                                    "<td>" + data[i].name + "</td>" +
+                                    "<td>" + data[i].address + "</td>" +
+                                    "<td>" + data[i].openTime + "</td>" +
+                                    "<td>" + data[i].phone + "</td>" +
+                                    "<td><img src='../pictures/Nofound.png' style='width:200px;'></td>" +
+                                    "<td style='vertical-align:middle;'><a href='https://www.google.com.tw/maps/place/" + data[i].address + " 'target='_blank' class='btn btn-info'>地圖 </td><td style='vertical-align:middle;'>" +
+                                    "<form style='margin - left: 10px; ' method='post'> <input type='hidden' name='BStoreName' value='" + data[i].name + "' /> <input type='submit' id='BStoreName' value='檢視' class='btn btn-info' /></form>" + "</td>" +
+                                    "</tr>"
+                                    );
+                            }
+                        } else {
+                            if (data[i].representImage != null) {
+                                $("#tableshow").append
+                                    (
+                                    "<tr>" +
+                                    "<td>" + data[i].name + "</td>" +
+                                    "<td>" + data[i].address + "</td>" +
+                                    "<td>" + data[i].openTime + "</td>" +
+                                    "<td>" + data[i].phone + "</td>" +
+                                    "<td><img src='" + data[i].representImage + "' style='width:200px;'></td>" +
+                                    "<td style='vertical-align:middle;'><a href='https://www.google.com.tw/maps/place/" + data[i].address + " 'target='_blank' class='btn btn-info'>地圖 </td><td style='vertical-align:middle;'>" +
+                                    "<form style='margin-left:10px; 'method='post'> <input type='hidden' name='BStoreName' value='" + data[i].name + "' /> <input type='submit' id='BStoreName' value='檢視' class='btn btn-info' /></form>" + "</td>" +
+                                    "<td style='vertical-align:middle;> " +
+                                        "<form style='margin-left:10px;' action='Recv' method='post'>" + "<input type='hidden' name='favorite' value='" + data[i].name + "' /> " + "<input type='hidden' name='address' value='" + data[i].address + "' /> " + "<input type='hidden' name='opentime' value='" + data[i].openTime + "' /> " + "<input type='hidden' name='phone' value='" + data[i].phone + "' /> " + "<input type='hidden' name='image' value='" + data[i].representImage + "' /> " +"<input type='submit' name='favorite' value='加入最愛' class='btn btn-info'/></form></td>" +
+                                    "</tr>"
+                                    );
+                            } else {
+                                $("#tableshow").append
+                                    (
+                                    "<tr>" +
+                                    "<td>" + data[i].name + "</td>" +
+                                    "<td>" + data[i].address + "</td>" +
+                                    "<td>" + data[i].openTime + "</td>" +
+                                    "<td>" + data[i].phone + "</td>" +
+                                    "<td><img src='../pictures/Nofound.png' style='width:200px;'></td>" +
+                                    "<td style='vertical-align:middle;'><a href='https://www.google.com.tw/maps/place/" + data[i].address + " 'target='_blank' class='btn btn-info'>地圖 </td><td style='vertical-align:middle;'>" +
+                                    "<form style='margin - left: 10px; ' method='post'> <input type='hidden' name='BStoreName' value='" + data[i].name + "' /> <input type='submit' id='BStoreName' value='檢視' class='btn btn-info' /></form>" + "</td>" +
+                                    "<td style='vertical-align:middle;> " +
+                                    "<form style='margin-left:10px;' action='Recv' method='post'>" + "<input type='hidden' name='favorite' value='" + data[i].name + "' /> " + "<input type='hidden' name='address' value='" + data[i].address + "' /> " + "<input type='hidden' name='opentime' value='" + data[i].openTime + "' /> " + "<input type='hidden' name='phone' value='" + data[i].phone + "' /> " + "<input type='hidden' name='image' value='" + "../pictures/Nofound.png" + "' /> " +"<input type='submit' name='favorite' value='加入最愛' class='btn btn-info'/></form></td>" +
+                                    "</tr>"
+                                    );
+                            }
+                        }
+                    }
+                }
+            });
+        });
+</script>
+
+<h1 style="color:white;font-size:52px;">獨立書店</h1>
+
+<table class="table" id="tableshow" style="color:white;font-size:24px;">
+    <tr>
+        <th>名稱</th>
+        <th>地址</th>
+        <th>營業時間</th>
+        <th>電話</th>
+        <th>照片</th>
+        <th></th>
+    </tr>
+</table>
+

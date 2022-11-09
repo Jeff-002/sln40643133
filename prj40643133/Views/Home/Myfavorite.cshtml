@@ -1,0 +1,50 @@
+﻿@model IEnumerable<prj40643133.Models.tFavorite>
+
+@{
+    ViewBag.Title = "Myfavorite";
+}
+
+<h2>Myfavorite</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table">
+    <tr>
+        <th>名稱</th>
+        <th>地址</th>
+        <th>營業時間</th>
+        <th>電話</th>
+        <th>照片</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.fBStoreName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fOpentime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fPhone)
+        </td>
+        <td>
+            <img src="@Html.DisplayFor(modelItem => item.fImage)" style="width:200px;" />
+        </td>
+        <td>
+        <td style="vertical-align:middle;"><a href="https://www.google.com.tw/maps/place/@Html.DisplayFor(modelItem => item.fAddress)" target="_blank" class="btn btn-info">地圖</a> </td>
+        <td style="vertical-align:middle;">
+            <form action="Index" style="margin-left: 10px;" method="post"> <input type="hidden" name="BStoreName" value="@Html.DisplayFor(modelItem => item.fBStoreName)" /> <input type="submit" id="BStoreName" value="檢視" class="btn btn-info" /></form>
+        </td>
+        <td style="vertical-align:middle;">
+            <form action="Delete" style="margin-left: 10px;" method="post"> <input type="hidden" name="fId" value="@Html.DisplayFor(modelItem => item.fId)" /> <input type="submit" id="fId" value="刪除" class="btn btn-info" /></form>
+        </td>
+    </tr>
+}
+
+</table>

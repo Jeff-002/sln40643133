@@ -1,0 +1,64 @@
+﻿@model prj40643133.Models.tMember
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>會員註冊</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <span class="control-label col-md-2">帳號</span>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.fUserId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.fUserId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <span class="control-label col-md-2">密碼</span>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.fPwd, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.fPwd, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <span class="control-label col-md-2">姓名</span>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.fName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.fName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <span class="control-label col-md-2">電子信箱</span>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.fEmail, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.fEmail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <span class="control-label col-md-2">性別</span>
+            <div class="col-md-10">
+                @Html.RadioButtonFor(Model => Model.fSex, "男", new { @id = "Statusradio", @name = "Status" })男
+                @Html.RadioButtonFor(Model => Model.fSex, "女", new { @id = "Statusradio", @name = "Status" })女
+                @Html.ValidationMessageFor(model => model.fSex, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="註冊" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+

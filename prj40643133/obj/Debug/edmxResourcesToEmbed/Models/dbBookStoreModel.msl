@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="dbBookStoreModelStoreContainer" CdmEntityContainer="dbBookStoreEntities">
+    <EntitySetMapping Name="tBStoreDetail">
+      <EntityTypeMapping TypeName="dbBookStoreModel.tBStoreDetail">
+        <MappingFragment StoreEntitySet="tBStoreDetail">
+          <ScalarProperty Name="fId" ColumnName="fId" />
+          <ScalarProperty Name="fUserId" ColumnName="fUserId" />
+          <ScalarProperty Name="fBStoreName" ColumnName="fBStoreName" />
+          <ScalarProperty Name="fMessage" ColumnName="fMessage" />
+          <ScalarProperty Name="fSex" ColumnName="fSex" />
+          <ScalarProperty Name="fDateTime" ColumnName="fDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tFavorite">
+      <EntityTypeMapping TypeName="dbBookStoreModel.tFavorite">
+        <MappingFragment StoreEntitySet="tFavorite">
+          <ScalarProperty Name="fId" ColumnName="fId" />
+          <ScalarProperty Name="fUserId" ColumnName="fUserId" />
+          <ScalarProperty Name="fBStoreName" ColumnName="fBStoreName" />
+          <ScalarProperty Name="fAddress" ColumnName="fAddress" />
+          <ScalarProperty Name="fOpentime" ColumnName="fOpentime" />
+          <ScalarProperty Name="fPhone" ColumnName="fPhone" />
+          <ScalarProperty Name="fImage" ColumnName="fImage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tMember">
+      <EntityTypeMapping TypeName="dbBookStoreModel.tMember">
+        <MappingFragment StoreEntitySet="tMember">
+          <ScalarProperty Name="fId" ColumnName="fId" />
+          <ScalarProperty Name="fUserId" ColumnName="fUserId" />
+          <ScalarProperty Name="fPwd" ColumnName="fPwd" />
+          <ScalarProperty Name="fName" ColumnName="fName" />
+          <ScalarProperty Name="fEmail" ColumnName="fEmail" />
+          <ScalarProperty Name="fSex" ColumnName="fSex" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbBookStoreModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tBStoreDetail">
+    <Key>
+      <PropertyRef Name="fId" />
+    </Key>
+    <Property Name="fId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fUserId" Type="nvarchar" MaxLength="50" />
+    <Property Name="fBStoreName" Type="nvarchar(max)" />
+    <Property Name="fMessage" Type="text" />
+    <Property Name="fSex" Type="nvarchar" MaxLength="50" />
+    <Property Name="fDateTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tFavorite">
+    <Key>
+      <PropertyRef Name="fId" />
+    </Key>
+    <Property Name="fId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fUserId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="fBStoreName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="fAddress" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="fOpentime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="fPhone" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="fImage" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tMember">
+    <Key>
+      <PropertyRef Name="fId" />
+    </Key>
+    <Property Name="fId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fUserId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="fPwd" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="fName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="fEmail" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="fSex" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="dbBookStoreModelStoreContainer">
+    <EntitySet Name="tBStoreDetail" EntityType="Self.tBStoreDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tFavorite" EntityType="Self.tFavorite" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tMember" EntityType="Self.tMember" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>
